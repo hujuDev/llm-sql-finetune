@@ -1,0 +1,18 @@
+{
+    "spider-sql": {
+    "hf_hub_url": "b-mc2/sql-create-context",
+    "columns": {
+      "prompt": "question",
+      "query": "context",
+      "response": "answer"
+    }
+  },
+  "spider-sql-custom": {
+    "hf_hub_url": "hujudev/spider-text-2-sql-train",
+    "columns": {
+      "prompt": "Question",
+      "query": "Schema",
+      "response": "query"
+    }
+  }
+}

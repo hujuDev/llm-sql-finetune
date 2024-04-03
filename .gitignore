@@ -1,0 +1,12 @@
+# Ignore specific directories
+/data/datasets/spider/
+/repos/
+/checkpoints/*
+/wandb/
+
+# Ignore all files in the checkpoints directory without ignoring the directory itself
+/checkpoints/**
+!.gitkeep
+
+# Ignore specific files
+/core
