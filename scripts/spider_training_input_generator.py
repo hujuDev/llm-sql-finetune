@@ -93,9 +93,26 @@ def add_missing_sql_files(database_dir):
                 # Extract schema to the defined path
                 extract_schema_to_sql(sqlite_file, output_file)
 
+def combine_json_files(file_path_1, file_path_2, output_file_path):
+    # Read content from the first file
+    with open(file_path_1, 'r', encoding='utf-8') as file:
+        data_1 = json.load(file)
+    
+    # Read content from the second file
+    with open(file_path_2, 'r', encoding='utf-8') as file:
+        data_2 = json.load(file)
+    
+    # Combine the data from both files
+    combined_data = data_1 + data_2
+    
+    # Write the combined data to a new file
+    with open(output_file_path, 'w', encoding='utf-8') as file:
+        json.dump(combined_data, file, indent=4)
 
 add_missing_sql_files(database_dir)
 
 format_data('dev', data_dir, database_dir)
 format_data('train_spider', data_dir, database_dir)
 format_data('train_others', data_dir, database_dir)
+
+combine_json_files(os.path.join(data_dir, 'datasets_json/spider_train_spider.json'), os.path.join(data_dir, 'datasets_json/spider_train_others.json'), os.path.join(data_dir, 'datasets_json/spider_train_combined.json'))
