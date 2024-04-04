@@ -7,14 +7,15 @@ import os
 # Determine the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
 checkpoint_root_dir = os.path.join(script_dir, "../checkpoints")
-data_input_dir = os.path.join(script_dir, "../data/datasets/spider/formatted")
+evaluation_dir = os.path.join(script_dir, "../evaluation")
+data_input_dir = os.path.join(script_dir, "../data/datasets_json")
 
 # Setup argument parser
 parser = argparse.ArgumentParser(description="Generate responses for a JSON input file using ChatModel")
 parser.add_argument("--model_name_or_path", type=str, default="codellama/CodeLlama-7b-hf", help="Path or name of the model")
 parser.add_argument("--checkpoint_name", type=str, default="default", help="Name of the adapter")
-parser.add_argument("--input_file_name", type=str, default="dev/dev_data.json", help="Name to the input JSON file")
-parser.add_argument("--num_entries", type=int, default=20, help="Optional: Number of entries to process (if None, all entries will be processed)")
+parser.add_argument("--input_file_name", type=str, default="spider_dev.json", help="Name to the input JSON file")
+parser.add_argument("--num_entries", type=int, default=5, help="Optional: Number of entries to process (if None, all entries will be processed)")
 args = parser.parse_args()
 
 checkpoint_dir = os.path.join(checkpoint_root_dir, args.checkpoint_name)
@@ -52,7 +53,7 @@ for entry in tqdm(test_dataset, desc="Generating predictions"):
     # Append the response to outputs
     outputs.append(response)
 
-predicted_file_path = os.path.join(checkpoint_dir, "predicted" + str(args.num_entries) + ".txt")
+predicted_file_path = os.path.join(evaluation_dir, "predictions", "predicted_" + str(args.num_entries) + "_" + args.checkpoint_name + ".txt")
 
 # Write the outputs to predicted.txt
 with open(predicted_file_path, "w") as file:
