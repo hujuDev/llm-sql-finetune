@@ -1,6 +1,10 @@
 # Ignore specific directories
 /data/datasets/spider/
+/data/datasets_json/**
 /repos/**
+/evaluation/gold/**
+/evaluation/predictions/**
+/evaluation/results/**
 /checkpoints/*
 /wandb/
 
