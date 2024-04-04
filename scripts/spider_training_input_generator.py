@@ -109,6 +109,17 @@ def combine_json_files(file_path_1, file_path_2, output_file_path):
     with open(output_file_path, 'w', encoding='utf-8') as file:
         json.dump(combined_data, file, indent=4)
 
+def copy_sql_to_txt(source_file_path, destination_file_path):
+    # Open the source SQL file and read its content
+    with open(source_file_path, 'r', encoding='utf-8') as source_file:
+        content = source_file.read()
+    
+    # Open the destination text file and write the content
+    with open(destination_file_path, 'w', encoding='utf-8') as destination_file:
+        destination_file.write(content)
+
+    print(f"Content successfully copied from {source_file_path} to {destination_file_path}.")
+
 add_missing_sql_files(database_dir)
 
 format_data('dev', data_dir, database_dir)
@@ -116,3 +127,6 @@ format_data('train_spider', data_dir, database_dir)
 format_data('train_others', data_dir, database_dir)
 
 combine_json_files(os.path.join(data_dir, 'datasets_json/spider_train_spider.json'), os.path.join(data_dir, 'datasets_json/spider_train_others.json'), os.path.join(data_dir, 'datasets_json/spider_train_combined.json'))
+
+copy_sql_to_txt(os.path.join(data_dir, 'datasets/spider/dev_gold.sql'), os.path.join(script_dir, '../evaluation/gold/dev_gold.txt'))
+copy_sql_to_txt(os.path.join(data_dir, 'datasets/spider/train_gold.sql'), os.path.join(script_dir, '../evaluation/gold/train_gold.txt'))
