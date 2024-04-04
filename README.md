@@ -39,12 +39,12 @@ Example configurations are provided within these files. You can modify these con
 
 ### Usage
 
-#### spider_training_input_generator.py
+#### spider_data_preparation.py
 
-For preparing the input data from the Spider dataset for training, run this script:
+For preparing the input data from the Spider dataset for training and evaluating, run this script:
 
 ```bash
-python scripts/spider_training_input_generator.py
+python scripts/spider_data_preparation.py
 ```
 #### llama_lora_finetune.py
 
