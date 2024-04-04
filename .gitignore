@@ -1,6 +1,6 @@
 # Ignore specific directories
 /data/datasets/spider/
-/repos/
+/repos/**
 /checkpoints/*
 /wandb/
 

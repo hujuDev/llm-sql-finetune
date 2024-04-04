@@ -25,10 +25,9 @@ This project focuses on finetuning a large language model (LLM) for Text2SQL tas
    cd llm-sql-finetune
    pip install -r requirements.txt
    ```
-4. Download the Spider dataset and the CodeLlama-7b model from Hugging Face:
-   - Spider dataset: `hujudev/spider-text-2-sql-train`
-   - Model: `codellama/CodeLlama-7b-hf`
-5. (Optional) Download the pre-trained checkpoints if available.
+4. Download the [Spider dataset](https://drive.usercontent.google.com/download?id=1iRDVHLr4mX2wQKSgA9J8Pire73Jahh0m&export=download) and copy it to `data/datasets/spider`:
+5. `cd repos` and `git clone https://github.com/taoyds/test-suite-sql-eval` to download the evaluation repo into the repos directory 
+6. (Optional) Download the pre-trained checkpoints if available.
 
 ### Configuration
 
@@ -40,6 +39,13 @@ Example configurations are provided within these files. You can modify these con
 
 ### Usage
 
+#### spider_training_input_generator.py
+
+For preparing the input data from the Spider dataset for training, run this script:
+
+```bash
+python scripts/spider_training_input_generator.py
+```
 #### llama_lora_finetune.py
 
 Use this script for finetuning the LLM model with the LoRA method. You can start the finetuning process by running:
@@ -64,19 +70,20 @@ To generate predictions in the format required for the Spider evaluation, use th
 python scripts/llama_lora_prediction_generator.py
 ```
 
-#### spider_training_input_generator.py
+#### prediction_evaluation.py
 
-For preparing the input data from the Spider dataset for training, run this script:
+This script evaluates the generated predictions using the [test-suite-sql-eval](https://github.com/taoyds/test-suite-sql-eval) repository:
 
 ```bash
-python scripts/spider_training_input_generator.py
+python scripts/prediction_evaluation.py
 ```
+
 
 Make sure you have followed all the setup instructions and activated the correct Python environment before executing these scripts.
 
 ## License
 
-This project is licensed under the TODO License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
