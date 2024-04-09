@@ -86,19 +86,19 @@ if __name__ == "__main__":
 
     # Setup argument parser
     parser = argparse.ArgumentParser(description="Run scripts with given arguments")
-    parser.add_argument('--gold', default=os.path.join(script_dir, '../evaluation/gold/dev_gold.txt'), help='Gold standard file')
-    parser.add_argument('--pred', default=os.path.join(script_dir, '../evaluation/predictions/predicted_all_default.txt'), help='Predictions file')
-    parser.add_argument('--db', default=os.path.join(script_dir, '../data/datasets/spider/database/'), help='Path to database')
-    parser.add_argument('--table', default=os.path.join(script_dir, '../data/datasets/spider/tables.json'), help='Path to table JSON')
+    parser.add_argument('--gold', default='dev_gold.txt', help='Gold standard file')
+    parser.add_argument('--pred', default='predicted_all_default.txt', help='Predictions file')
+    parser.add_argument('--db', default='spider/database/', help='Path to database')
+    parser.add_argument('--table', default='spider/tables.json', help='Path to table JSON')
 
     args = parser.parse_args()
 
     script_args = [
-        "--gold", args.gold,
-        "--pred", args.pred,
-        "--etype", 'all',
-        "--db", args.db,
-        "--table", args.table,
+        "--gold", os.path.join(script_dir, '../evaluation/gold', args.gold),
+        "--pred", os.path.join(script_dir, '../evaluation/predictions', args.pred),
+        "--db", os.path.join(script_dir, '../data/datasets', args.db),
+        "--table", os.path.join(script_dir, '../data/datasets', args.table),
+        "--etype", 'all'
     ]
 
     script = os.path.join(script_dir, "../repos/test-suite-sql-eval/evaluation.py")
