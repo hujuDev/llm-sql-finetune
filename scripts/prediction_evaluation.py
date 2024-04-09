@@ -86,8 +86,8 @@ if __name__ == "__main__":
 
     # Setup argument parser
     parser = argparse.ArgumentParser(description="Run scripts with given arguments")
-    parser.add_argument('--gold', default=os.path.join(script_dir, '../evaluation/gold/dev_gold copy.txt'), help='Gold standard file')
-    parser.add_argument('--pred', default=os.path.join(script_dir, '../evaluation/predictions/predicted_5_default.txt'), help='Predictions file')
+    parser.add_argument('--gold', default=os.path.join(script_dir, '../evaluation/gold/dev_gold.txt'), help='Gold standard file')
+    parser.add_argument('--pred', default=os.path.join(script_dir, '../evaluation/predictions/predicted_all_default.txt'), help='Predictions file')
     parser.add_argument('--db', default=os.path.join(script_dir, '../data/datasets/spider/database/'), help='Path to database')
     parser.add_argument('--table', default=os.path.join(script_dir, '../data/datasets/spider/tables.json'), help='Path to table JSON')
 

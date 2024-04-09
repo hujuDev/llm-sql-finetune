@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(description="Generate responses for a JSON inpu
 parser.add_argument("--model_name_or_path", type=str, default="codellama/CodeLlama-7b-hf", help="Path or name of the model")
 parser.add_argument("--checkpoint_name", type=str, default="default", help="Name of the adapter")
 parser.add_argument("--input_file_name", type=str, default="spider_dev.json", help="Name to the input JSON file")
-parser.add_argument("--num_entries", type=int, default=5, help="Optional: Number of entries to process (if None, all entries will be processed)")
+parser.add_argument("--num_entries", type=int, default=None, help="Optional: Number of entries to process (if None, all entries will be processed)")
 args = parser.parse_args()
 
 checkpoint_dir = os.path.join(checkpoint_root_dir, args.checkpoint_name)
